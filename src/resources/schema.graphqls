@@ -1,0 +1,34 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Ranking {
+  id: ID!
+  name: String!
+  items: [Item!]!
+}
+
+type Item {
+  id: ID!
+  ranking_id: ID!
+  name: String!
+  point: Int!
+}
+
+type Query {
+  rankings: [Ranking!]!
+}
+
+type Mutation {
+  createRanking(input: NewRanking!): Ranking!
+  addItem(input: AddItem!): Ranking!
+}
+
+input NewRanking {
+  name: String!
+}
+
+input AddItem {
+  ranking_id: ID!
+  name: String!
+}
